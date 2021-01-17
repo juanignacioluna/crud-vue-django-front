@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+    <title>CRUD DJANGO VUE Juan Ignacio Luna</title>
+</head>
+<body>
+	<style scoped> @import './style.css'; </style>
+
+    <div id="app" class="grid-container fluid">
+        <div class="grid-x grid-margin-x">
+            <div class="cell">
+
+            	<br>
+            	<br>
+
+                <h1>CRUD (Django, Vue, Foundation, MySQL)</h1>
+                <br>
+                <button v-on:click="nuevo" type="button" class="success button">Nuevo</button>
+                <table class="hover unstriped">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Edad</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+
+                    	<tr v-show="nuevoBool">
+				    		<td>
+				    			<input id="nameNewInput" type="text" required>
+       						</td>
+				    		<td>
+				    			<input id="edadNewInput" type="text" required>
+       						</td>
+		                    <td>
+	                            <button v-on:click="agregar" type="button" class="success button">Agregar</button>
+	                        </td>
+                        </tr>
+
+                        <tr v-for="(persona, index) in personas" :key="persona.id">
+                            <td v-bind:title="persona.id" name="nombre">{{ persona.nombre }}</td>
+                            <td v-bind:title="persona.id" name="edad">{{ persona.edad }}</td>
+                            <td name="acciones" v-bind:title="persona.id">
+                                <button title="editar" v-bind:name="persona.id" v-on:click="editar" 
+                                type="button" class="warning button">Editar</button>
+                                <button v-bind:name="persona.id" v-on:click="eliminar"
+                                type="button" class="alert button">Eliminar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+	<script
+	  src="https://code.jquery.com/jquery-3.5.0.min.js"
+	  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+	  crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="./app.js"></script>
+</body>
+</html>
